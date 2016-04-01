@@ -189,16 +189,18 @@ app.controller('MainCtrl', [
         return;
       }
       posts.create({
-        title: $scope.title,
-        link: $scope.link,
+        title:$scope.title,
+        link: $scope.link
       });
       $scope.title = '';
       $scope.link = '';
     }
-    $scope.incrementUpvotes = function(post) {
+    $scope.upvote = function(post) {
       posts.upvote(post);
     };
-
+		$scope.downvote = function(post) {
+      posts.downvote(post);
+    };
   }
 ]);
 app.controller('AuthCtrl', [
@@ -253,7 +255,10 @@ app.controller('PostsCtrl', ['$scope','posts','post','auth',
       });
       $scope.body = '';
     }
-    $scope.incrementUpvotes = function(comment) {
+    $scope.upvoteComment = function(comment) {
       posts.upvoteComment(post, comment);
+    };
+		$scope.downvoteComment = function(comment) {
+      posts.downvoteComment(post, comment);
     };
   }]);
